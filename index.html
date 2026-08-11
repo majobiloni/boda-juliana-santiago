@@ -117,9 +117,9 @@ nav a:hover{color:var(--terracota);transform:translateY(-1px)}
 }
 .hero h1 em{font-style:italic;color:var(--terracota)}
 .hero-amp{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'DM Sans',sans-serif;
   font-size:clamp(1.4rem,6vw,2.2rem);
-  font-style:italic;color:var(--gold);
+  font-weight:300;font-style:normal;color:var(--gold);
   display:block;margin:0.5rem 0;
 }
 .hero-date{
@@ -268,36 +268,6 @@ section{padding:3.2rem 1.5rem;position:relative}
   .momento-divider{width:1px;height:auto;margin:0.4rem 2rem;background:rgba(196,151,78,0.3)}
 }
 
-/* CRONOGRAMA */
-.cronograma{background:var(--warm);overflow:hidden}
-.tl{display:flex;flex-direction:column;max-width:480px;margin:0 auto;position:relative;z-index:1}
-.tl-item{
-  display:grid;grid-template-columns:68px 1px 1fr;
-  gap:0 1rem;align-items:start;
-  padding-bottom:1.6rem;
-}
-.tl-item:last-child{padding-bottom:0}
-.tl-hora{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;font-style:italic;font-weight:600;
-  color:var(--terracota);text-align:right;
-  padding-top:2px;
-}
-.tl-line{display:flex;flex-direction:column;align-items:center}
-.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px;transition:transform 0.3s ease,background 0.3s ease}
-.tl-connector{width:1px;flex:1;background:rgba(196,151,78,0.3);margin-top:4px}
-.tl-item:last-child .tl-connector{display:none}
-.tl-item:hover .tl-dot{transform:scale(1.6);background:var(--terracota)}
-.tl-item:hover .tl-texto strong{color:var(--terracota)}
-.tl-texto strong{transition:color 0.25s ease}
-.tl-texto strong{
-  display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.05rem;font-weight:500;color:var(--brown);
-  padding-top:2px;
-}
-.tl-texto span{font-size:0.84rem;color:var(--brown-mid)}
-
 /* DRESSCODE */
 .dresscode{background:var(--cream)}
 .dresscode-inner{max-width:580px;margin:0 auto;text-align:center}
@@ -443,16 +413,6 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
   .regalos{padding:4rem 2rem}
 }
 
-/* Cronograma flower only desktop */
-.cron-fl{
-  position:absolute;top:-20px;right:-20px;
-  width:min(40vw,160px);
-  opacity:0.45;mix-blend-mode:multiply;
-  pointer-events:none;transform:scaleX(-1);
-  display:none;
-}
-@media(min-width:700px){.cron-fl{display:block}}
-
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important}
 }
@@ -462,7 +422,6 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 
 <nav>
   <a href="#ceremonia">Ceremonia</a>
-  <a href="#cronograma">Cronograma</a>
   <a href="#vestimenta">Vestimenta</a>
   <a href="#rsvp">Confirmar</a>
 </nav>
@@ -535,35 +494,6 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
     </div>
 
     <a href="https://maps.app.goo.gl/1pWxPTuTu1GDu1Ws8" class="btn-map" target="_blank">Cómo llegar →</a>
-  </div>
-</section>
-
-<!-- CRONOGRAMA -->
-<section class="cronograma" id="cronograma">
-  <img class="cron-fl" src="https://i.ibb.co/HLt0QMdY/flores2.jpg" alt="">
-  <span class="sec-label">el día a día</span>
-  <h2 class="sec-title">Cronograma</h2>
-  <div class="tl">
-    <div class="tl-item reveal">
-      <div class="tl-hora">16:45</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-texto"><strong>Ceremonia religiosa</strong><span>Confratelli Cabañas</span></div>
-    </div>
-    <div class="tl-item reveal">
-      <div class="tl-hora">18:30</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-texto"><strong>Recepción y cóctel</strong><span>Recepción y cóctel al aire libre en Confratelli</span></div>
-    </div>
-    <div class="tl-item reveal">
-      <div class="tl-hora">21:00</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-texto"><strong>Cena y momentos especiales</strong><span>Bajo las estrellas</span></div>
-    </div>
-    <div class="tl-item reveal">
-      <div class="tl-hora">23:00</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-texto"><strong>¡A bailar!</strong><span>Apertura de la pista</span></div>
-    </div>
   </div>
 </section>
 
