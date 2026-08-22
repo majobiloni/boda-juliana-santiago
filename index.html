@@ -77,7 +77,13 @@ nav a:hover{color:var(--terracota);transform:translateY(-1px)}
 .hero-content>*:nth-child(5){animation-delay:0.7s}
 .hero-content>*:nth-child(6){animation-delay:0.82s}
 .hero-content>*:nth-child(7){animation-delay:0.94s}
+.hero-content>*:nth-child(8){animation-delay:1.06s}
 
+.hero-flowers{
+  display:block;width:min(78vw,360px);
+  margin:0 auto 0.8rem;
+  opacity:0.92;
+}
 .hero-tag{
   font-size:0.88rem;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;
   color:var(--gold-deep);margin-bottom:1.2rem;
@@ -102,13 +108,13 @@ nav a:hover{color:var(--terracota);transform:translateY(-1px)}
 }
 .hero-date{
   margin-top:1.8rem;
-  font-size:clamp(0.95rem,3.4vw,1.25rem);
-  letter-spacing:0.28em;text-transform:uppercase;
+  font-size:clamp(1.2rem,5vw,1.5rem);
+  letter-spacing:0.24em;text-transform:uppercase;
   color:var(--brown-mid);font-weight:400;
 }
 .hero-place{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,4.6vw,1.55rem);
+  font-size:clamp(1.5rem,6.5vw,1.85rem);
   font-style:italic;color:var(--terra-light);
   margin-top:0.3rem;display:block;
 }
@@ -306,7 +312,7 @@ section{padding:3.2rem 1.5rem;position:relative}
   gap:0;margin-bottom:1.6rem;flex-wrap:wrap;
 }
 .dresscode-col{flex:1;min-width:140px;padding:0 1rem}
-.dresscode-col-icon{width:68px;height:68px;display:block;margin:0 auto 0.6rem;opacity:0.85}
+.dresscode-col-icon{width:92px;height:92px;display:block;margin:0 auto 0.6rem;opacity:0.85}
 .dresscode-col-label{
   display:block;font-size:0.76rem;font-weight:500;letter-spacing:0.14em;
   text-transform:uppercase;color:var(--gold-deep);margin-bottom:0.5rem;
@@ -521,6 +527,7 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
+    <img class="hero-flowers" src="assets/flores-header.png" alt="">
     <div class="hero-tag">¡Nos casamos!</div>
     <h1><em>Juliana</em></h1>
     <span class="hero-amp">&</span>
