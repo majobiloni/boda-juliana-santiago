@@ -19,7 +19,6 @@
   --gold-light:#E8C98A;
   --gold-deep:#96712F;
   --white:#FEFCF9;
-  --wine:#5c2130;
 }
 html{scroll-behavior:smooth}
 body{
@@ -252,7 +251,7 @@ section{padding:3.2rem 1.5rem;position:relative}
 .evento-lugar{
   font-family:'DM Sans',sans-serif;
   font-weight:500;font-style:normal;
-  font-size:clamp(1.1rem,4.5vw,1.35rem);color:var(--brown);
+  font-size:clamp(1.2rem,4.8vw,1.45rem);color:var(--terracota);
   letter-spacing:0.12em;text-transform:uppercase;
 }
 .evento-dir{font-size:0.82rem;color:var(--brown-mid);margin-top:0.15rem;text-align:center}
@@ -307,6 +306,7 @@ section{padding:3.2rem 1.5rem;position:relative}
   gap:0;margin-bottom:1.6rem;flex-wrap:wrap;
 }
 .dresscode-col{flex:1;min-width:140px;padding:0 1rem}
+.dresscode-col-icon{width:56px;height:56px;display:block;margin:0 auto 0.6rem;opacity:0.85}
 .dresscode-col-label{
   display:block;font-size:0.76rem;font-weight:500;letter-spacing:0.14em;
   text-transform:uppercase;color:var(--gold-deep);margin-bottom:0.5rem;
@@ -450,34 +450,34 @@ section{padding:3.2rem 1.5rem;position:relative}
 
 /* RSVP */
 .rsvp{
-  background:var(--wine);
+  background:var(--terracota);
   padding:4rem 1.5rem;text-align:center;
   position:relative;overflow:hidden;
 }
-.rsvp .sec-label{color:var(--gold-light)}
+.rsvp .sec-label{color:var(--cream)}
 .rsvp .sec-title{color:var(--cream)}
 .rsvp-sub{
-  font-size:0.98rem;color:rgba(250,247,242,0.6);
+  font-size:0.98rem;color:rgba(250,247,242,0.85);
   max-width:400px;margin:0 auto 0.6rem;
   line-height:1.7;position:relative;z-index:1;
 }
 .rsvp-fecha{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;font-size:1.15rem;
-  color:var(--gold-light);
+  color:var(--cream);
   display:block;margin-bottom:2rem;
   position:relative;z-index:1;
 }
 .btn-rsvp{
   display:inline-block;
   padding:1rem 2.8rem;
-  background:var(--terracota);color:var(--cream);
+  background:var(--cream);color:var(--terracota);
   font-size:0.82rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;
   text-decoration:none;border-radius:100px;
   transition:background 0.25s,transform 0.2s,box-shadow 0.25s;
   position:relative;z-index:1;
 }
-.btn-rsvp:hover{background:var(--terra-light);transform:translateY(-3px);box-shadow:0 10px 30px rgba(181,96,74,0.35)}
+.btn-rsvp:hover{background:var(--white);transform:translateY(-3px);box-shadow:0 10px 30px rgba(61,46,38,0.3)}
 
 /* FOOTER */
 footer{background:var(--warm);padding:3rem 1.5rem;text-align:center}
@@ -569,7 +569,7 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
     <div class="cd-unit"><span class="cd-num" id="seconds">00</span><span class="cd-lbl">seg</span></div>
   </div>
   <a class="btn-cal" target="_blank" rel="noopener"
-     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamiento+de+Juliana+%26+Santiago&dates=20261128T194500Z/20261129T080000Z&details=Ceremonia+16%3A45+hs.+Fiesta+al+t%C3%A9rmino+en+Confratelli+Caba%C3%B1as.+Ubicaci%C3%B3n%3A+https%3A%2F%2Fmaps.app.goo.gl%2F1pWxPTuTu1GDu1Ws8&location=Confratelli+Caba%C3%B1as%2C+Av.+Prefectura+Naval+4516%2C+Paso+de+la+Patria%2C+Corrientes">
+     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamiento+de+Juliana+%26+Santiago&dates=20261128T203000Z/20261129T080000Z&details=Ceremonia+17%3A30+hs.+Fiesta+al+t%C3%A9rmino+en+Confratelli+Caba%C3%B1as.+Ubicaci%C3%B3n%3A+https%3A%2F%2Fmaps.app.goo.gl%2F1pWxPTuTu1GDu1Ws8&location=Confratelli+Caba%C3%B1as%2C+Av.+Prefectura+Naval+4516%2C+Paso+de+la+Patria%2C+Corrientes">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 15h2M14 15h2M8 18h2"/></svg>
     Agregar a mi calendario
   </a>
@@ -589,7 +589,7 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 
     <div class="momentos">
       <div class="momento">
-        <span class="momento-hora">16:45 hs</span>
+        <span class="momento-hora">17:30 hs</span>
         <h3>Ceremonia</h3>
         <p>Nos daremos el "Sí, quiero" en una ceremonia íntima y muy especial. ¡Tu puntualidad nos ayuda a que todo fluya perfecto!</p>
       </div>
@@ -613,11 +613,13 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
     <p class="dresscode-code">Elegante <span>|</span> Formal</p>
     <div class="dresscode-grid">
       <div class="dresscode-col">
+        <img class="dresscode-col-icon" src="assets/icon-traje.png" alt="">
         <span class="dresscode-col-label">Para ellos</span>
-        <p>Traje o conjunto elegante</p>
+        <p>Traje de vestir</p>
       </div>
       <div class="dresscode-divider"></div>
       <div class="dresscode-col">
+        <img class="dresscode-col-icon" src="assets/icon-vestido.png" alt="">
         <span class="dresscode-col-label">Para ellas</span>
         <p>Vestido o conjunto elegante</p>
       </div>
@@ -720,7 +722,7 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 
 <script>
 function tick(){
-  const d=new Date('2026-11-28T16:45:00-03:00')-new Date();
+  const d=new Date('2026-11-28T17:30:00-03:00')-new Date();
   if(d<=0)return;
   const pad=n=>String(Math.floor(n)).padStart(2,'0');
   document.getElementById('days').textContent=pad(d/864e5);
