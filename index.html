@@ -19,6 +19,7 @@
   --gold-light:#E8C98A;
   --gold-deep:#96712F;
   --white:#FEFCF9;
+  --wine:#6b2b21;
 }
 html{scroll-behavior:smooth}
 body{
@@ -62,28 +63,6 @@ nav a:hover{color:var(--terracota);transform:translateY(-1px)}
   background:var(--cream);
 }
 
-/* Flowers — hidden on mobile, visible on desktop */
-.fl-hero-tl{
-  position:absolute;top:-20px;left:-30px;
-  width:260px;
-  opacity:0.85;mix-blend-mode:multiply;
-  transform-origin:80% 90%;
-  animation:sway 6s ease-in-out infinite;
-  pointer-events:none;
-  display:none; /* hidden mobile */
-}
-.fl-hero-tr{
-  position:absolute;top:-20px;right:-30px;
-  width:260px;
-  opacity:0.85;mix-blend-mode:multiply;
-  transform-origin:20% 90%;
-  animation:swayMirror 7s ease-in-out infinite;
-  pointer-events:none;
-  display:none; /* hidden mobile */
-}
-
-@keyframes sway{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
-@keyframes swayMirror{0%,100%{transform:scaleX(-1) rotate(-1.5deg)}50%{transform:scaleX(-1) rotate(1.5deg)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
 /* SCROLL REVEAL */
@@ -227,11 +206,18 @@ section{padding:3.2rem 1.5rem;position:relative}
 }
 .evento-hora::after{content:'';flex:1;height:1px;background:var(--terracota);opacity:0.25}
 .evento-card p{font-size:0.98rem;color:var(--brown-mid);line-height:1.68;margin-bottom:0.5rem}
-.evento-lugar{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.12rem;font-style:italic;color:var(--brown);
+.evento-lugar-wrap{
+  display:flex;align-items:center;justify-content:center;
+  gap:0.55rem;margin-bottom:0.3rem;
 }
-.evento-dir{font-size:0.82rem;color:var(--brown-mid);margin-top:0.15rem}
+.evento-lugar-icon{width:20px;height:20px;stroke:var(--terracota);flex-shrink:0}
+.evento-lugar{
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;font-style:normal;
+  font-size:clamp(1.3rem,5.5vw,1.7rem);color:var(--brown);
+  letter-spacing:0.005em;
+}
+.evento-dir{font-size:0.82rem;color:var(--brown-mid);margin-top:0.15rem;text-align:center}
 .btn-map{
   display:inline-flex;align-items:center;gap:0.4rem;
   margin-top:1.1rem;
@@ -272,16 +258,33 @@ section{padding:3.2rem 1.5rem;position:relative}
 .dresscode{background:var(--cream)}
 .dresscode-inner{max-width:580px;margin:0 auto;text-align:center}
 .dresscode p{font-size:0.98rem;color:var(--brown-mid);line-height:1.72;margin-bottom:1rem}
-.dresscode-nota{
-  background:var(--white);
-  border:1px solid rgba(196,151,78,0.25);
-  border-radius:2px;
-  padding:1.2rem 1.5rem;
+.dresscode-code{
   font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-size:1.05rem;
-  color:var(--terracota);
-  margin-top:1.2rem;line-height:1.55;
+  font-size:1.5rem;font-style:italic;color:var(--terracota);
+  margin-bottom:1.8rem;letter-spacing:0.02em;
 }
+.dresscode-code span{color:var(--gold);font-style:normal;margin:0 0.4rem}
+.dresscode-grid{
+  display:flex;justify-content:center;align-items:stretch;
+  gap:0;margin-bottom:1.6rem;flex-wrap:wrap;
+}
+.dresscode-col{flex:1;min-width:140px;padding:0 1rem}
+.dresscode-col-label{
+  display:block;font-size:0.76rem;font-weight:500;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--gold-deep);margin-bottom:0.5rem;
+}
+.dresscode-col p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-style:italic;color:var(--brown);margin-bottom:0.5rem;
+}
+.dresscode-col p:last-child{margin-bottom:0}
+.dresscode-col p.dresscode-note{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;font-style:normal;font-weight:300;
+  color:var(--brown-mid);line-height:1.6;
+}
+.dresscode-divider{width:1px;align-self:stretch;background:rgba(196,151,78,0.3)}
+@media(max-width:479px){.dresscode-divider{display:none}}
 
 /* HOSPEDAJE */
 .hospedaje{background:var(--warm)}
@@ -313,16 +316,33 @@ section{padding:3.2rem 1.5rem;position:relative}
 
 /* FOTO FAMILIA */
 .familia{background:var(--cream);padding:3rem 1.5rem}
-.familia-inner{max-width:480px;margin:0 auto;text-align:center}
-.familia-foto{
-  width:100%;max-width:380px;
-  border-radius:4px;
-  display:block;margin:0 auto 1.5rem;
-  border:4px solid var(--white);
-  box-shadow:0 8px 40px rgba(61,46,38,0.12);
-  transition:transform 0.5s cubic-bezier(.22,1,.36,1),box-shadow 0.5s ease;
+.familia-inner{max-width:620px;margin:0 auto;text-align:center}
+.galeria-wrap{
+  overflow:hidden;margin:0 auto 2rem;
+  -webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);
+  mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);
 }
-.familia-foto:hover{transform:scale(1.02);box-shadow:0 16px 50px rgba(61,46,38,0.18)}
+.galeria-track{
+  display:flex;gap:1.6rem;width:max-content;
+  animation:galeria-scroll 20s linear infinite;
+}
+.galeria-track:hover{animation-play-state:paused}
+@keyframes galeria-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.polaroid{
+  flex:0 0 auto;width:190px;
+  background:var(--white);
+  padding:10px 10px 16px;
+  box-shadow:0 10px 28px rgba(61,46,38,0.18);
+  transform:rotate(var(--rot,0deg));
+  transition:transform 0.35s cubic-bezier(.22,1,.36,1),box-shadow 0.35s ease;
+}
+.polaroid:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 18px 40px rgba(61,46,38,0.24)}
+.polaroid img{width:100%;height:190px;object-fit:cover;display:block}
+.polaroid-year{
+  display:block;text-align:center;margin-top:10px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;
+  color:var(--brown-mid);
+}
 .familia-texto{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(1.1rem,4vw,1.35rem);
@@ -337,27 +357,58 @@ section{padding:3.2rem 1.5rem;position:relative}
 .regalos-box{
   background:var(--white);
   border:1px solid rgba(196,151,78,0.25);
-  border-radius:2px;
-  padding:1.5rem;
+  border-radius:22px;
+  padding:1.6rem 1.7rem;
   margin-top:0.5rem;
   transition:transform 0.35s ease,box-shadow 0.35s ease;
 }
 .regalos-box:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(61,46,38,0.1)}
-.regalos-box p{
+.regalos-box>p{
   font-size:0.88rem;color:var(--brown-mid);
   margin-bottom:0.3rem;letter-spacing:0.02em;
 }
-.regalos-placeholder{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.05rem;font-style:italic;
-  color:var(--brown-mid);opacity:0.55;
-  border-top:1px dashed rgba(196,151,78,0.3);
-  padding-top:0.8rem;margin-top:0.6rem;
+.regalos-details{margin-top:0.7rem}
+.regalos-ver-mas{
+  cursor:pointer;list-style:none;
+  display:inline-block;
+  font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--terracota);border-bottom:1px solid rgba(181,96,74,0.3);
+  padding-bottom:2px;transition:color 0.25s,border-color 0.25s;
 }
+.regalos-ver-mas::-webkit-details-marker{display:none}
+.regalos-ver-mas:hover{color:var(--terra-light);border-color:var(--terra-light)}
+.regalos-datos{
+  margin-top:1rem;padding-top:0.9rem;
+  border-top:1px dashed rgba(196,151,78,0.3);
+  text-align:left;
+}
+.regalos-datos p{
+  font-size:0.88rem;color:var(--brown-mid);
+  margin-bottom:0.55rem;line-height:1.55;
+}
+.regalos-datos strong{color:var(--brown);font-weight:600}
+.regalos-copy-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:0.6rem;flex-wrap:wrap;
+}
+.regalos-copy-btn{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  border:1px solid rgba(196,151,78,0.4);border-radius:100px;
+  background:var(--cream);cursor:pointer;
+  padding:0.3rem 0.7rem;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.7rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--terracota);
+  transition:background 0.2s,border-color 0.2s,color 0.2s;
+  flex-shrink:0;
+}
+.regalos-copy-btn svg{width:13px;height:13px;stroke:currentColor;flex-shrink:0}
+.regalos-copy-btn:hover{background:var(--warm);border-color:var(--terracota)}
+.regalos-copy-btn.copied{color:var(--white);background:var(--terracota);border-color:var(--terracota)}
 
 /* RSVP */
 .rsvp{
-  background:var(--brown);
+  background:var(--wine);
   padding:4rem 1.5rem;text-align:center;
   position:relative;overflow:hidden;
 }
@@ -399,14 +450,13 @@ footer{background:var(--warm);padding:3rem 1.5rem;text-align:center}
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(1.7rem,6vw,2.2rem);
   font-weight:300;font-style:italic;
-  color:var(--brown);margin-bottom:0.4rem;
+  color:var(--terracota);letter-spacing:-0.01em;margin-bottom:0.4rem;
 }
 .footer-line{width:40px;height:1px;background:var(--gold);margin:1rem auto;opacity:0.5}
 footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 
-/* DESKTOP: show hero flowers */
+/* DESKTOP */
 @media(min-width:700px){
-  .fl-hero-tl,.fl-hero-tr{display:block}
   .hero{padding:6rem 2rem 4rem}
   section{padding:4rem 2rem}
   .familia{padding:4rem 2rem}
@@ -428,8 +478,6 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 
 <!-- HERO -->
 <section class="hero">
-  <img class="fl-hero-tl" src="https://i.ibb.co/HLt0QMdY/flores2.jpg" alt="">
-  <img class="fl-hero-tr" src="https://i.ibb.co/HLt0QMdY/flores2.jpg" alt="">
   <div class="hero-content">
     <div class="hero-tag">¡Nos casamos!</div>
     <h1><em>Juliana</em></h1>
@@ -476,7 +524,10 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
   <h2 class="sec-title">Un mismo lugar,<br>dos momentos</h2>
 
   <div class="evento-card reveal" id="fiesta">
-    <p class="evento-lugar">Confratelli Cabañas</p>
+    <div class="evento-lugar-wrap">
+      <svg class="evento-lugar-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.58 7-12A7 7 0 0 0 5 10c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <p class="evento-lugar">Confratelli Cabañas</p>
+    </div>
     <p class="evento-dir">Av. Prefectura Naval 4516 · Paso de la Patria, Corrientes</p>
 
     <div class="momentos">
@@ -502,10 +553,19 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
   <div class="dresscode-inner reveal">
     <span class="sec-label">vestimenta</span>
     <h2 class="sec-title">Código de vestimenta</h2>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--terracota);margin-bottom:1rem">Elegante · Boho Chic</p>
-    <p>Vení con tu mejor look para celebrar al aire libre. Como el festejo cuenta con espacios de jardín y césped, te sugerimos <strong style="font-weight:500;color:var(--brown)">plataformas o taco ancho</strong> para poder disfrutar toda la noche con comodidad.</p>
-    <div class="dresscode-nota">
-      El blanco, beige y tonos crema están reservados exclusivamente para la novia. ¡Gracias por guardarle ese lugar especial! 🤍
+    <p class="dresscode-code">Elegante <span>|</span> Formal</p>
+    <div class="dresscode-grid">
+      <div class="dresscode-col">
+        <span class="dresscode-col-label">Para ellos</span>
+        <p>Traje o conjunto elegante</p>
+      </div>
+      <div class="dresscode-divider"></div>
+      <div class="dresscode-col">
+        <span class="dresscode-col-label">Para ellas</span>
+        <p>Vestido o conjunto elegante</p>
+        <p class="dresscode-note">Calzado cómodo, ideal para jardín y césped</p>
+        <p class="dresscode-note">Blanco, beige y tonos crema reservados para la novia 🤍</p>
+      </div>
     </div>
   </div>
 </section>
@@ -519,6 +579,7 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
     <ul class="hospedaje-lista">
       <li><span class="hospedaje-nombre">Hotel Condado Casino</span><a class="hospedaje-buscar" href="https://www.google.com/search?q=Hotel+Condado+Casino+Paso+de+la+Patria+Corrientes" target="_blank" rel="noopener">Buscar</a></li>
       <li><span class="hospedaje-nombre">Cabañas Don Julián</span><a class="hospedaje-buscar" href="https://www.google.com/search?q=Caba%C3%B1as+Don+Juli%C3%A1n+Paso+de+la+Patria+Corrientes" target="_blank" rel="noopener">Buscar</a></li>
+      <li><span class="hospedaje-nombre">Sonsoles</span><a class="hospedaje-buscar" href="https://www.google.com/search?q=Sonsoles+Paso+de+la+Patria+Corrientes" target="_blank" rel="noopener">Buscar</a></li>
     </ul>
   </div>
 </section>
@@ -526,7 +587,16 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
 <!-- FOTO FAMILIA -->
 <section class="familia">
   <div class="familia-inner reveal">
-    <img class="familia-foto" src="https://i.ibb.co/vCzcDWNH/juli.jpg" alt="Juliana, Santiago y sus hijas">
+    <div class="galeria-wrap">
+      <div class="galeria-track">
+        <div class="polaroid" style="--rot:-6deg"><img src="assets/pareja-2016.jpg" alt="Juliana y Santiago en 2016"><span class="polaroid-year">2016</span></div>
+        <div class="polaroid" style="--rot:4deg"><img src="assets/pareja-2026.jpg" alt="Juliana y Santiago en 2026"><span class="polaroid-year">2026</span></div>
+        <div class="polaroid" style="--rot:-3deg"><img src="assets/familia-2026.jpg" alt="Juliana, Santiago y sus hijas en 2026"><span class="polaroid-year">2026</span></div>
+        <div class="polaroid" style="--rot:-6deg" aria-hidden="true"><img src="assets/pareja-2016.jpg" alt=""><span class="polaroid-year">2016</span></div>
+        <div class="polaroid" style="--rot:4deg" aria-hidden="true"><img src="assets/pareja-2026.jpg" alt=""><span class="polaroid-year">2026</span></div>
+        <div class="polaroid" style="--rot:-3deg" aria-hidden="true"><img src="assets/familia-2026.jpg" alt=""><span class="polaroid-year">2026</span></div>
+      </div>
+    </div>
     <p class="familia-texto">
       Nos embarcamos en esta aventura con todo el amor del mundo y con las mejores compañeras de vida que podríamos pedir. 🌸
     </p>
@@ -541,7 +611,27 @@ footer p{font-size:0.84rem;color:var(--brown-mid);line-height:1.6}
     <p>Tu presencia es nuestro mejor regalo. Pero si deseás hacernos un obsequio para ayudarnos con nuestra luna de miel, podés hacerlo a través de nuestra cuenta bancaria.</p>
     <div class="regalos-box">
       <p>Banco · Alias · CBU</p>
-      <p class="regalos-placeholder">Próximamente completamos este espacio 🌿</p>
+      <details class="regalos-details">
+        <summary class="regalos-ver-mas">Ver más</summary>
+        <div class="regalos-datos">
+          <p><strong>Titulares:</strong> Meza Tanara Santiago (CUIL 20408171955) y Biloni Juliana Italy (CUIL 23416279004)</p>
+          <p><strong>Tipo de cuenta:</strong> Caja de ahorro en pesos</p>
+          <p class="regalos-copy-row">
+            <span><strong>CBU:</strong> 0940099360010240570021</span>
+            <button class="regalos-copy-btn" type="button" data-copy="0940099360010240570021">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <span class="regalos-copy-label">Copiar</span>
+            </button>
+          </p>
+          <p class="regalos-copy-row">
+            <span><strong>Alias:</strong> BODA.JULISANTI</span>
+            <button class="regalos-copy-btn" type="button" data-copy="BODA.JULISANTI">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <span class="regalos-copy-label">Copiar</span>
+            </button>
+          </p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -588,6 +678,35 @@ const io=new IntersectionObserver((entries)=>{
   });
 },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+function fallbackCopy(text){
+  const ta=document.createElement('textarea');
+  ta.value=text;
+  ta.style.position='fixed';
+  ta.style.opacity='0';
+  document.body.appendChild(ta);
+  ta.focus();ta.select();
+  try{document.execCommand('copy')}catch(e){}
+  document.body.removeChild(ta);
+}
+function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    return navigator.clipboard.writeText(text).catch(()=>fallbackCopy(text));
+  }
+  fallbackCopy(text);
+  return Promise.resolve();
+}
+document.querySelectorAll('.regalos-copy-btn').forEach(btn=>{
+  const label=btn.querySelector('.regalos-copy-label');
+  btn.addEventListener('click',()=>{
+    copyText(btn.dataset.copy).then(()=>{
+      btn.classList.add('copied');
+      const prev=label.textContent;
+      label.textContent='¡Copiado!';
+      setTimeout(()=>{btn.classList.remove('copied');label.textContent=prev;},1600);
+    }).catch(()=>{});
+  });
+});
 </script>
 </body>
 </html>
